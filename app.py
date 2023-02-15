@@ -12,11 +12,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
     db.init_app(app)
 
-    from book.views import display as book_display
-    from user.views import display as user_display
+    from views import display
 
-    app.register_blueprint(book_display, name='book_display', url_prefix='/book')
-    app.register_blueprint(user_display, name='user_display', url_prefix='/users')
+    app.register_blueprint(display, url_prefix='/main-view')
 
     with app.app_context():
         db.create_all()
