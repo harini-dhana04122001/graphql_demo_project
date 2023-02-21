@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask_graphql import GraphQLView
 
-from graphql_book_user import schema
+from schema import schema
 
 display = Blueprint('display', __name__)
 
@@ -14,6 +14,14 @@ display.add_url_rule(
     )
 )
 
+
+# @display.route('/get',methods=['GET'])
+# def get_community():
+#     communities = Community.query.all()
+#     community = [community.id for community in communities]
+#     building = Building.query.filter_by(community_id.in_(community)).all()
+#     print(list(building.block_name))
+#     # return jsonify(dict(building))
 
 # @display.route('/', methods=['POST'])
 # def create_book_detail():

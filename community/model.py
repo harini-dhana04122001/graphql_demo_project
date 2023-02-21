@@ -8,7 +8,7 @@ class Community(db.Model):
     name = db.Column(db.String(256), index=True, nullable=False)
     agent_name = db.Column(db.String, nullable=False)
     agent_contact = db.Column(db.String, nullable=False)
-    buildings = db.relationship('Building', backref='community')
+    building = db.relationship('Building', back_populates='community')
 
     def __init__(self, name, agent_name, agent_contact):
         self.name = name

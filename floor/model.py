@@ -7,7 +7,7 @@ class Floor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     floor_name = db.Column(db.String(4), index=True, nullable=False)
     building_id = db.Column(db.Integer, db.ForeignKey('building.id'), nullable=False)
-    # units = db.relationship('Unit', backref='floor', lazy=True)
+    building = db.relationship('Building', back_populates='floor')
 
     def __init__(self, floor_name, building_id):
         self.floor_name = floor_name

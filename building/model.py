@@ -7,7 +7,8 @@ class Building(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     block_name = db.Column(db.String(256), index=True, nullable=False)
     community_id = db.Column(db.Integer(), db.ForeignKey('community.id'), nullable=False)
-    floor = db.relationship('Floor', backref='building', lazy=True)
+    floor = db.relationship('Floor', back_populates='building')
+    community = db.relationship('Community', back_populates='building')
 
     def __init__(self, name, community_id):
         self.block_name = name
